@@ -22,3 +22,7 @@ to the transactions list.
 ### Removing transactions
 
 Click the trash can icon lol
+
+### Tested in
+
+    - Google Chrome
