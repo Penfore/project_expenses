@@ -26,12 +26,17 @@ class ExpensesApp extends StatelessWidget {
               secondary: Colors.amber,
             ),
             textTheme: theme.textTheme.copyWith(
-                headline6: const TextStyle(
-              fontFamily: 'OpenSans',
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            )),
+              headline6: const TextStyle(
+                fontFamily: 'OpenSans',
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              button: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             appBarTheme: const AppBarTheme(
                 titleTextStyle: TextStyle(
               fontFamily: 'OpenSans',
@@ -47,25 +52,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [
-    Transaction(
-      id: 't0',
-      title: 'Conta antiga',
-      value: 500.50,
-      date: DateTime.now().subtract(const Duration(days: 33)),
-    ),
-    Transaction(
-      id: 't1',
-      title: 'Novo tênis de corrida',
-      value: 310.76,
-      date: DateTime.now().subtract(const Duration(days: 3)),
-    ),
-    Transaction(
-        id: 't2',
-        title: 'Conta de luz',
-        value: 211.30,
-        date: DateTime.now().subtract(const Duration(days: 4))),
-  ];
+  final List<Transaction> _transactions = [];
 
   List<Transaction> get _recentTransactions {
     return _transactions.where((transaction) {
@@ -74,18 +61,24 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  _addTransaction(String title, double value) {
+  _addTransaction(String title, double value, DateTime date) {
     final newTransaction = Transaction(
         id: Random().nextDouble().toString(),
         title: title,
         value: value,
-        date: DateTime.now());
+        date: date);
 
     setState(() {
       _transactions.add(newTransaction);
     });
 
     Navigator.of(context).pop();
+  }
+
+  _removeTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((transaction) => transaction.id == id);
+    });
   }
 
   _openTransactionFormModal(BuildContext context) {
@@ -104,8 +97,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Despesas Pessoais'),
         actions: [
           IconButton(
-              onPressed: () => _openTransactionFormModal(context),
-              icon: const Icon(Icons.add)),
+            onPressed: () => _openTransactionFormModal(context),
+            icon: Icon(
+              Icons.add_circle,
+              color: Theme.of(context).colorScheme.secondary,
+            ),
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -113,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Chart(_recentTransactions),
-            TransactionList(_transactions),
+            TransactionList(_transactions, _removeTransaction),
           ],
         ),
       ),
