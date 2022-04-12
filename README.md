@@ -4,6 +4,8 @@ An app to add your transactions and keep track of the percentage of each day for
 
 ## How is it going
 
+You can check on [this link](https://projectexpenses-59226.web.app)!
+
 You can add and remove a transactions. A chart will be shown based on your transactions
 from the last 7 days.
 
