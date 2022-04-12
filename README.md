@@ -26,3 +26,7 @@ Click the trash can icon lol
 ### Tested in
 
     - Google Chrome
+
+### Known issues
+
+Nones yet :/ pls tell me about them
