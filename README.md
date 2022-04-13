@@ -26,6 +26,7 @@ Click the trash can icon lol
 ### Tested in
 
     - Google Chrome
+    - iPhone 6s (in Safari web browser)
 
 ### Known issues
 
