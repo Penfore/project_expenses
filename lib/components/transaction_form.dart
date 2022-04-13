@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'adaptative_button.dart';
+
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
 
@@ -50,6 +52,7 @@ class _TransactionFormState extends State<TransactionForm> {
         elevation: 5,
         child: Padding(
           padding: EdgeInsets.only(
+            // TODO: Fix the scroll issue on iOS when using the keyboard
             top: 10,
             right: 10,
             left: 10,
@@ -96,8 +99,8 @@ class _TransactionFormState extends State<TransactionForm> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  ElevatedButton(
-                    child: const Text('Nova transação'),
+                  AdaptativeButton(
+                    label: 'Nova transação',
                     onPressed: _submitForm,
                   ),
                 ],
