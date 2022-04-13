@@ -29,4 +29,4 @@ Click the trash can icon lol
 
 ### Known issues
 
-Nones yet :/ pls tell me about them
+    - The iOS keyboard is in front of the text field and the scrolling is not working.
