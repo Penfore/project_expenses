@@ -31,3 +31,6 @@ Click the trash can icon lol
 ### Known issues
 
     - The iOS keyboard is in front of the text field and the scrolling is not working.
+    - The Android keyboard is also not scrolling while the text field is open.
+    - The MaterialDatePicker is showing up when the add transaction button is pressed even in the iOS version. Then after closing it shows the add transaction modal.
+    - The iOS version can only type and date pick in landscape mode (?? pls help)
